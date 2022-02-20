@@ -1,2 +1,2 @@
 # golang
-Learn Go programming. So far its fun..
+Programs written while learning Go programming. So far its fun..
