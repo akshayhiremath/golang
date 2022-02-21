@@ -13,14 +13,23 @@ func main() {
 	log.SetPrefix("Greetings: ")
 	log.SetFlags(0)
 
-	//Send empty value
-	message, err := greetings.Hello("")
+	var message string
+	var err error
+	//Request a standard greeting
+	message, err = greetings.Hello("Akshay", "std")
+
+	//Print a greeting message with the name to console
+	fmt.Println(message)
+
+	//Request a random greeting
+	message, err = greetings.Hello("Akshay", "random")
+
+	//Print a greeting mesage with the name to console
+	fmt.Println(message)
 
 	//Log error
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	//If non empty name is sent to greetings provider. Print a greeting with the name to console
-	fmt.Println(message)
 }
