@@ -5,6 +5,8 @@ import (
 	"log"
 
 	greetings "github.com/akshayhiremath/golang/greetings"
+	stringutils "github.com/alessiosavi/GoGPUtils/string"
+	"rsc.io/quote"
 )
 
 func main() {
@@ -18,18 +20,35 @@ func main() {
 	//Request a standard greeting
 	message, err = greetings.Hello("Akshay", "std")
 
+	//Log error and exit
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	//Print a greeting message with the name to console
 	fmt.Println(message)
 
 	//Request a random greeting
 	message, err = greetings.Hello("Akshay", "random")
 
-	//Print a greeting mesage with the name to console
-	fmt.Println(message)
-
-	//Log error
+	//Log error and exit
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	//Print a greeting mesage with the name to console
+	fmt.Println(message)
+
+}
+
+func stringUtilUse() {
+	//Use function from stringutils module
+	result := stringutils.CheckPresence([]string{"India", "Canada", "USA"}, "Japan")
+	fmt.Println("Result ", result)
+}
+
+func getAndPrintQuote() {
+	//TODO use the sampler and get greeting in Marathi
+	// Print quote using quote module
+	fmt.Println(quote.Go())
 }
