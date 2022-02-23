@@ -18,7 +18,7 @@ func main() {
 	var message string
 	var err error
 	//Request a standard greeting
-	message, err = greetings.Hello("Akshay", "std")
+	message, err = greetings.Hello("John", "std")
 
 	//Log error and exit
 	if err != nil {
@@ -29,7 +29,7 @@ func main() {
 	fmt.Println(message)
 
 	//Request a random greeting
-	message, err = greetings.Hello("Akshay", "random")
+	message, err = greetings.Hello("John", "random")
 
 	//Log error and exit
 	if err != nil {
@@ -38,6 +38,19 @@ func main() {
 
 	//Print a greeting mesage with the name to console
 	fmt.Println(message)
+
+	//A slice of names
+	names := []string{"George", "Ricky", "Tony", "Sandy"}
+
+	messages, err := greetings.Hellos(names)
+
+	//Error in name mapping
+	if err != nil {
+		log.Fatal(err)
+	}
+	//If no error was returned, print the returned map of
+	//messages to the console
+	fmt.Println(messages)
 
 }
 

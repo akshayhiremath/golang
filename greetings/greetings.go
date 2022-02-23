@@ -8,7 +8,7 @@ import (
 )
 
 //Returns a greeting for the named person
-func Hello(name string, gtype string) (string, error) {
+func Hello(name string, greetingtype string) (string, error) {
 	//Check if name is empty and return error
 	if name == "" {
 		return "", errors.New("empty name entry")
@@ -16,18 +16,41 @@ func Hello(name string, gtype string) (string, error) {
 
 	var message string
 	//If standard greeting is requested
-	if gtype == "std" {
+	if greetingtype == "std" {
 		//If name has a value return a greeting message
-		message = fmt.Sprintf("Hi, %v. Welcome!", name)
+		// message = fmt.Sprintf("Hi, %v. Welcome!", name)
+		message = fmt.Sprintf("Hi, %v. Welcome!", "")
 	}
 
 	//If random greeting is requested
-	if gtype == "random" {
+	if greetingtype == "random" {
 		message = fmt.Sprintf(randomFormat(), name)
 	}
 
 	return message, nil
 
+}
+
+//Returns a map that associates each of the named people
+//with a greeting message.
+func Hellos(names []string) (map[string]string, error) {
+	//A map to associate names with messages
+	messages := make(map[string]string) //make map initialization
+
+	// Loop through the received slice of names, calling the Hello
+	//function to get a message for each name.
+	for _, name := range names {
+
+		message, err := Hello(name, "random")
+		if err != nil {
+			return nil, err
+		}
+
+		//In the map, associate the retrived name with the name
+		messages[name] = message
+	}
+
+	return messages, nil
 }
 
 //init sets intial values for variables used in the function
